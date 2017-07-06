@@ -151,6 +151,9 @@
 		DDD9127B1ED45C5700E0E157 /* XMPPRoomLight+XEP_0313.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD9127A1ED45C5700E0E157 /* XMPPRoomLight+XEP_0313.m */; };
 		DDD9127C1ED45C5700E0E157 /* XMPPRoomLight+XEP_0313.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD9127A1ED45C5700E0E157 /* XMPPRoomLight+XEP_0313.m */; };
 		E094FB5B1CE107550033E0E0 /* XMPPStreamManagementDiscStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E094FB5A1CE107550033E0E0 /* XMPPStreamManagementDiscStorage.m */; };
+		E45DC7791F0A15F200629D5D /* XMPPStream+XMPPTBRAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = E45DC7741F0A15F200629D5D /* XMPPStream+XMPPTBRAuthentication.m */; };
+		E45DC77A1F0A15F200629D5D /* XMPPTBRAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = E45DC7761F0A15F200629D5D /* XMPPTBRAuthentication.m */; };
+		E45DC77B1F0A15F200629D5D /* XMPPTBReconnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E45DC7781F0A15F200629D5D /* XMPPTBReconnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +290,12 @@
 		E094FB591CE107550033E0E0 /* XMPPStreamManagementDiscStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStreamManagementDiscStorage.h; sourceTree = "<group>"; };
 		E094FB5A1CE107550033E0E0 /* XMPPStreamManagementDiscStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStreamManagementDiscStorage.m; sourceTree = "<group>"; };
 		E0ED70069EEE9C42A3458F39 /* Pods-Mangosta REST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mangosta REST.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mangosta REST/Pods-Mangosta REST.release.xcconfig"; sourceTree = "<group>"; };
+		E45DC7731F0A15F200629D5D /* XMPPStream+XMPPTBRAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPStream+XMPPTBRAuthentication.h"; sourceTree = "<group>"; };
+		E45DC7741F0A15F200629D5D /* XMPPStream+XMPPTBRAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPStream+XMPPTBRAuthentication.m"; sourceTree = "<group>"; };
+		E45DC7751F0A15F200629D5D /* XMPPTBRAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTBRAuthentication.h; sourceTree = "<group>"; };
+		E45DC7761F0A15F200629D5D /* XMPPTBRAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTBRAuthentication.m; sourceTree = "<group>"; };
+		E45DC7771F0A15F200629D5D /* XMPPTBReconnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTBReconnection.h; sourceTree = "<group>"; };
+		E45DC7781F0A15F200629D5D /* XMPPTBReconnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTBReconnection.m; sourceTree = "<group>"; };
 		FB21A84DE3DB4A7D04D49713 /* Pods-Mangosta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mangosta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mangosta/Pods-Mangosta.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0B48606E9587DFCED6A206 /* Pods-Mangosta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mangosta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mangosta/Pods-Mangosta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -371,6 +380,7 @@
 		814D4CA31C970E5B00AB28FA /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E45DC7721F0A15F200629D5D /* Token-Based-Reconnection */,
 				8142B8301CB6C7190095FCF1 /* Mangosta-Bridging-Header.h */,
 				DDD912691ED320A300E0E157 /* XMPPOneToOneChat.h */,
 				DD2542BB1EFC1BAF00926E38 /* XMPPOneToOneChat+Protected.h */,
@@ -633,6 +643,19 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		E45DC7721F0A15F200629D5D /* Token-Based-Reconnection */ = {
+			isa = PBXGroup;
+			children = (
+				E45DC7731F0A15F200629D5D /* XMPPStream+XMPPTBRAuthentication.h */,
+				E45DC7741F0A15F200629D5D /* XMPPStream+XMPPTBRAuthentication.m */,
+				E45DC7751F0A15F200629D5D /* XMPPTBRAuthentication.h */,
+				E45DC7761F0A15F200629D5D /* XMPPTBRAuthentication.m */,
+				E45DC7771F0A15F200629D5D /* XMPPTBReconnection.h */,
+				E45DC7781F0A15F200629D5D /* XMPPTBReconnection.m */,
+			);
+			path = "Token-Based-Reconnection";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -726,8 +749,9 @@
 				TargetAttributes = {
 					81ECA34B1C92CDE4000602F2 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = RN98T2SU3Z;
+						DevelopmentTeam = PD534C2J3M;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -853,7 +877,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8969D462D1D92C7AFFCAD0E9 /* [CP] Copy Pods Resources */ = {
@@ -939,7 +963,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -952,6 +976,7 @@
 				C1CAEAAA1D11DDEE006E2A49 /* XMPPMessage+XEP_0313.m in Sources */,
 				AC7B7D3C1DDE4DAF00B3AEB8 /* SocialMedia.swift in Sources */,
 				AC3E3FD11E7C3F19005EA75B /* SendingStatusPresenter.swift in Sources */,
+				E45DC77A1F0A15F200629D5D /* XMPPTBRAuthentication.m in Sources */,
 				DD1E73421EDC546D009B529B /* XMPPCoreDataChatDataSource.swift in Sources */,
 				C135D9231CE3A0B400225EC7 /* MembersViewController.swift in Sources */,
 				DD22EA081ECF3903000D006C /* XMPPOneToOneChat+XEP_0313.m in Sources */,
@@ -983,6 +1008,7 @@
 				AC5D3EA51E1D7B2A00B3AEB8 /* RosterViewController.swift in Sources */,
 				DD1E2C121EDEE30E0092FE98 /* XMPPFramework+ChatViewControllerMessageSender.swift in Sources */,
 				DD5ECED41EFD43460055A966 /* XMPPCoreDataChatDataSource+XMPPMessageArchiving_Message_CoreDataObject.swift in Sources */,
+				E45DC77B1F0A15F200629D5D /* XMPPTBReconnection.m in Sources */,
 				DD4B5BD01EC9D8A200237BB0 /* NSXMLElement+XEP_0277.m in Sources */,
 				C19BA8021D243AB900F5BAB2 /* XMPPController.swift in Sources */,
 				DDD912771ED45B9700E0E157 /* XMPPMessageArchivingCoreDataStorage+XEP_0313.m in Sources */,
@@ -995,6 +1021,7 @@
 				81473D901CC10949006FCEC9 /* MUCRoomCreateViewController.swift in Sources */,
 				DD1EF3CB1ED582D90034F6F3 /* NSString+XMPP_XEP_0245.m in Sources */,
 				DD1E73451EDD4668009B529B /* XMPPMessageInteractionHandler.swift in Sources */,
+				E45DC7791F0A15F200629D5D /* XMPPStream+XMPPTBRAuthentication.m in Sources */,
 				DD2542B51EFC15A500926E38 /* XMPPOneToOneChat+XMPPRetransmissionDelegate.m in Sources */,
 				DD2226521E93A04F00F8C04D /* XMPPServiceDiscovery+XEP_0357.m in Sources */,
 				81F8E8351CA023B1008099D1 /* LoginViewController.swift in Sources */,
@@ -1215,11 +1242,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mangosta/Mangosta.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = RN98T2SU3Z;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = PD534C2J3M;
 				INFOPLIST_FILE = Mangosta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.inakanetworks.Mangosta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kulcare.patientapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mangosta/Library/Mangosta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1235,11 +1264,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mangosta/Mangosta.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = RN98T2SU3Z;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = PD534C2J3M;
 				INFOPLIST_FILE = Mangosta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.inakanetworks.Mangosta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kulcare.patientapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mangosta/Library/Mangosta-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

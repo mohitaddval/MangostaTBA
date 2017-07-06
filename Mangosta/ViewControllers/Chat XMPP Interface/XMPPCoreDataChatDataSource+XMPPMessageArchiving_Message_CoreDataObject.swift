@@ -26,5 +26,5 @@ extension XMPPMessageArchiving_Message_CoreDataObject: TextMessageFetchRequestRe
     var senderId: String { return bareJidStr }
     var isIncoming: Bool { return !isOutgoing }
     var date: Date { return timestamp }
-    var text: String { return body }
+    var text: String { return body ?? "" }
 }

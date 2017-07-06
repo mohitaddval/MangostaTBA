@@ -19,3 +19,6 @@
 #import "XMPPRetransmissionRoomLightStorageFilter.h"
 #import "XMPPOneToOneChat+XMPPRetransmissionDelegate.h"
 #import "XMPPRoomLight+XMPPRetransmissionDelegate.h"
+#import "XMPPTBReconnection.h"
+#import "XMPPTBRAuthentication.h"
+#import "XMPPStream+XMPPTBRAuthentication.h"

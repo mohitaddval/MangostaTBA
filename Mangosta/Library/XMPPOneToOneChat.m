@@ -38,9 +38,10 @@ static const int xmppLogLevel = XMPP_LOG_LEVEL_WARN;
 
 - (void)handleMessage:(XMPPMessage *)message outgoing:(BOOL)isOutgoing inStream:(XMPPStream *)stream
 {
-    if (![message isChatMessage]) {
-        return;
-    }
+    // This is archieve only 1:1 msgs
+//    if (![message isChatMessage]) {
+//        return;
+//    }
     
     if (!isOutgoing) {
         [[self sessionForUserJID:[message from]] handleIncomingMessage:message];

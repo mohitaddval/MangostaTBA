@@ -60,7 +60,7 @@ class XMPPController: NSObject {
 
     var xmppOneToOneChat: XMPPOneToOneChat
     var xmppMUCLight: XMPPMUCLight
-    let mucLightServiceName = "muclight.erlang-solutions.com" // TODO: service discovery
+    let mucLightServiceName = "muclight.msg.kulcare.com" // TODO: service discovery
     var roomsLight = [XMPPRoomLight]() {
         willSet {
             for removedRoom in (roomsLight.filter { !newValue.contains($0) }) {
@@ -230,7 +230,7 @@ class XMPPController: NSObject {
 		self.goOffLine()
 		self.xmppStream.disconnectAfterSending()
 	}
-
+//Method to retrieve previous archieved messgaes (MAM)
     func retrieveMessageHistory(fromArchiveAt archiveJid: XMPPJID? = nil, startingAt startDate: Date? = nil, filteredBy filteringJid: XMPPJID? = nil) {
         let queryFields = [
             startDate.map { XMPPMessageArchiveManagement.field(withVar: "start", type: nil, andValue: ($0 as NSDate).xmppDateTimeString())!},
@@ -239,6 +239,8 @@ class XMPPController: NSObject {
         
         xmppMessageArchiveManagement.retrieveMessageArchive(at: archiveJid ?? xmppStream.myJID.bare(), withFields: queryFields, with: XMPPResultSet(max: NSNotFound, after: ""))
     }
+    
+    
 
     func addRoom(withName roomName: String, initialOccupantJids: [XMPPJID]?) {
         let addedRoom = XMPPRoomLight(jid: XMPPJID(string: mucLightServiceName)!, roomname: roomName)
@@ -334,9 +336,16 @@ extension XMPPController: XMPPStreamDelegate {
         // However, microblog currently has no persistent storage and depends on
         // initial presence-based last item delivery each time the app is started
         self.goOnline()
-        
+
+        self.xmppServiceDiscovery.discoverItemsAssociated(with: xmppStream.myJID.domain())
         self.xmppServiceDiscovery.discoverInformationAbout(xmppStream.myJID.domain()) // TODO: xmppStream.myJID.bareJID()
         self.xmppMUCLight.discoverRooms(forServiceNamed: mucLightServiceName)
+    
+        //Get Auth Token
+        let xmppTBR = XMPPTBReconnection()!
+        xmppTBR.myStream = self.xmppStream
+        xmppTBR.getAuthToken()
+        
 	}
 	
 	func xmppStream(_ sender: XMPPStream!, didNotAuthenticate error: DDXMLElement!) {
@@ -398,14 +407,14 @@ extension XMPPController: XMPPMUCLightDelegate {
     func xmppMUCLight(_ sender: XMPPMUCLight, didDiscoverRooms rooms: [DDXMLElement], forServiceNamed serviceName: String) {
         roomsLight = rooms.map { (rawElement) -> XMPPRoomLight in
             let rawJid = rawElement.attributeStringValue(forName: "jid")
-            let rawName = rawElement.attributeStringValue(forName: "name")!
+            let rawName = rawElement.attributeStringValue(forName: "name") ?? rawJid?.components(separatedBy: ".").first
             let jid = XMPPJID(string: rawJid)!
             
             if let existingRoom = (roomsLight.first { $0.roomJID == jid}) {
                 return existingRoom
             } else {
                 let filteredRoomLightStorage = XMPPRetransmissionRoomLightStorageFilter(baseStorage: xmppRoomLightCoreDataStorage, xmppRetransmission: xmppRetransmission)
-                return XMPPRoomLight(roomLightStorage: filteredRoomLightStorage, jid: jid, roomname: rawName, dispatchQueue: .main)
+                return XMPPRoomLight(roomLightStorage: filteredRoomLightStorage, jid: jid, roomname: rawName!, dispatchQueue: .main)
             }
         }
     }
@@ -419,6 +428,10 @@ extension XMPPController: XMPPRoomLightDelegate {
     
     func xmppRoomLight(_ sender: XMPPRoomLight, didCreateRoomLight iq: XMPPIQ) {
         xmppMUCLight.discoverRooms(forServiceNamed: mucLightServiceName)
+    }
+    
+    func xmppRoomLight(_ sender: XMPPRoomLight, didFailToCreateRoomLight iq: XMPPIQ) {
+        print(iq)
     }
     
     func xmppRoomLight(_ sender: XMPPRoomLight, configurationChanged message: XMPPMessage) {

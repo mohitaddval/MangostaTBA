@@ -10,7 +10,7 @@
 #import "XMPPMessage+XEP_0313.h"
 
 @implementation XMPPRoomLight (XEP_0313)
-
+//Archieved message received here
 - (void)xmppMessageArchiveManagement:(XMPPMessageArchiveManagement *)xmppMessageArchiveManagement didReceiveMAMMessage:(XMPPMessage *)message
 {
     XMPPMessage *archivedMessage = [message messageForForwardedArchiveMessage];
@@ -24,6 +24,15 @@
     }
 
     [multicastDelegate xmppRoomLight:self didReceiveArchivedMessage:archivedMessage withTimestamp:[NSDate dateWithXmppDateTimeString:[message delayStamp]]];
+}
+
+- (void)xmppMessageArchiveManagement:(XMPPMessageArchiveManagement *)xmppMessageArchiveManagement didFinishReceivingMessagesWithSet:(XMPPResultSet *)resultSet{
+    NSLog(@"%@",resultSet);
+
+}
+
+- (void)xmppMessageArchiveManagement:(XMPPMessageArchiveManagement *)xmppMessageArchiveManagement didFailToReceiveMessages:(XMPPIQ *)error{
+    NSLog(@"%@",error);
 }
 
 @end

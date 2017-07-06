@@ -38,7 +38,9 @@ class XMPPRoomChatMessageHistoryFetchAction: ChatViewControllerAdditionalAction 
     }
     
     func perform(inContextOf chatViewController: ChatViewController) {
-        xmppController.retrieveMessageHistory(fromArchiveAt: roomJid)
+        let calendar = Calendar.current
+        let twoDaysAgo = calendar.date(byAdding: .day, value: -2, to: Date())
+        xmppController.retrieveMessageHistory(fromArchiveAt: roomJid, startingAt:twoDaysAgo)
     }
 }
 
